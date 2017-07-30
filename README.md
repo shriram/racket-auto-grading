@@ -17,7 +17,9 @@ System dependencies:
 In your homework dir, clone this repository.
 
 Make sure student submissions are in `Submissions/Code/` and
-`Submissions/Tests/`.
+`Submissions/Tests/`. In my world, these are links to directories in
+Google Drive, created by a Google Form that has two download fields:
+one for code and the other for tests (one file each).
 
 Create `Grades/Code/` and `Grades/Tests/`.
 
@@ -150,7 +152,7 @@ alphabetically earlier who submitted between the two grading runs…
 
 Student submissions are in `Submissions/` (with `Code/` and `Tests/`
 subdirs). Typically, this is a link to a Google Drive directory since
-the regexp above uses Google Drive naming conventions.
+the regexp in `common.rkt` uses Google Drive naming conventions.
 
 Grading support materials reside in
 - tests for student code: `Tests/`
@@ -218,6 +220,10 @@ with the constructed files on which Racket was run.
 - Assumptions about student languages are baked into wheat/chaff
   testing, too: the script will strip off the three comment lines
   automatically prepended to student language code by DrRacket.
+
+- Expand to allow multi-file uploads or create an alternate version
+  where each function's tests reside in a different file (which
+  would greatly simplify this infrastructure).
 
 - Get rid of bash! Run everything inside Racket itself. In particular,
   there shouldn't be need to use bash to run `raco test`.
