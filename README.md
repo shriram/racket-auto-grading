@@ -1,4 +1,4 @@
-# Purpose
+## Purpose
 
 To automate grading of programs written in student languages, both
 
@@ -12,37 +12,36 @@ System dependencies:
 
 ----
 
-# TL;DR
+## TL;DR
 
-In your grading dir, clone this repository.
+In your homework dir, clone this repository.
 
 Make sure student submissions are in `Submissions/Code/` and
 `Submissions/Tests/`.
 
 Create `Grades/Code/` and `Grades/Tests/`.
 
-Edit `common.rkt` to customize for a particular assignment. Odds are
-you will need to alter
+Edit `racket-auto/grading/common.rkt` to customize for a particular
+assignment. Odds are you will need to alter
 - `asgn-names` (List-of-strings, sans `".rkt"` at the end)
 - `extract-name-regexp-maker` (String -> Regexp, parameter is
   typically `"code"` or `"tests"`; even if you keep everything else the
   same, the first few chars of the regexp must change to reflect the
   current assignment name)
-If you see no output, odds are you forgot to edit one or both.
 
 Sacrifice a lambda in the name of the Knights of the Lambda Calculus.
 
 Then run:
 ```
-  racket grade-code.rkt
-  racket grade-tests.rkt
+  racket racket-auto-grading/grade-code.rkt
+  racket racket-auto-grading/grade-tests.rkt
 ```
 
 Much more detail follows.
 
 ----
 
-# Repository Name Dependency
+## Repository Name Dependency
 
 The Racket programs assume the scripts reside in `racket-auto-grading/`
 relative to the current directory. So if you change the name of the
@@ -50,7 +49,7 @@ repo after cloning it, you need to update this name in each program.
 
 ----
 
-# Testing File Assumption
+## Testing File Assumption
 
 Assumption: students have turned all tests in in a single file, which
 may include tests for multiple functions. This file must also contain
@@ -60,7 +59,7 @@ tests, but it must NOT contain any implementations of those functions
 
 ----
 
-# Multiple Submissions
+## Multiple Submissions
 
 Depending on how the submission process is configured, students may be
 free to submit more than once. In Google Drive, this will result in
@@ -72,7 +71,7 @@ homework deadline; etc.).
 
 ----
 
-# Reading Test Counts
+## Reading Test Counts
 
 Note that the code correctness report may report a large number of
 tests. This is an artifact of both tests the students themselves wrote
@@ -82,7 +81,7 @@ student's program passed all the tests that you wrote.
 
 ----
 
-# Speed
+## Speed
 
 Grading tests takes a while, because new files have to be created and
 then tests run for each combination of student * assignment * chaff.
@@ -95,7 +94,10 @@ crash catastrophically on your system. Try at your own risk.
 
 ----
 
-# Troubleshooting
+## Troubleshooting
+
+If you see no student names printed, you may have made a mistake when
+editing (or forgotten to edit) `racket-auto-grading/common.rkt`.
 
 If a student appears to have no grading output: e.g.,
 ```
@@ -130,7 +132,7 @@ That said, if it finds something unpredicted in the output, it'll say
 
 ----
 
-# System State
+## System State
 
 A student's name is printed at the beginning of grading them, but
 their grade report is written out only at the end. Thus, if there's a
@@ -144,7 +146,7 @@ alphabetically earlier who submitted between the two grading runs…
 
 ----
 
-# Pathnames
+## Pathnames
 
 Student submissions are in `Submissions/` (with `Code/` and `Tests/`
 subdirs). Typically, this is a link to a Google Drive directory since
@@ -176,6 +178,9 @@ To grade tests, run
 If it finds a grade report already in `Grades/Tests/` it will skip.
 (So to redo grading — e.g., if chaffs change — clean out that dir.)
 
+(There are two different commands because some assignments have only
+one component; different people may run each part; etc.)
+
 Every *freshly* graded student's name is printed.
 
 `grade-code.rkt` uses `grade-person-code.sh` to grade one person.
@@ -191,7 +196,7 @@ with the constructed files on which Racket was run.
 
 ----
 
-# Future Work
+## Future Work
 
 - Use Wheats when grading tests!
 
