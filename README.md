@@ -43,6 +43,33 @@ Much more detail follows.
 
 ----
 
+## Context
+
+The key feature of this grading infrastructure is that it supports the
+grading of tests. In [_HtDP_](http://htdp.org/),
+students are expected to write examples
+to help in designing their programs,and tests subsequently to find
+errors in them. Both of these are written using the syntax of test
+cases. Students ought to then turn and be graded on the quality of
+their tests.
+
+How do we measure test quality? Tests are _classifiers_: they classify
+programs as either correct or incorrect implementations of a
+specification. Therefore, a measure of a test is how accurately it
+classifies a suite of programs. We call the correct implementations
+*wheat* and the incorrect implementations *chaff*, so the test's job
+is to separate wheat from chaff. (This terminology is due to
+[John Hughes](http://cs.brown.edu/~jfh/);
+in our earlier research [*], we called these _golds_ and _coals_
+respectively, but those terms sound too similar, and often require
+more explanation.)
+
+[*] See Joe Politz's papers comparing these to human peer review:
+[_The Sweep: Essential Examples for In-Flow Peer Review_](http://cs.brown.edu/~sk/Publications/Papers/Published/pcgfk-sweep-ess-eg-ifpr/),
+[_In-Flow Peer-Review of Tests in Test-First Programming_](http://cs.brown.edu/~sk/Publications/Papers/Published/pkf-ifpr-tests-tf-prog/).
+
+----
+
 ## Repository Name Dependency
 
 The Racket programs assume the scripts reside in `racket-auto-grading/`
@@ -87,7 +114,6 @@ student's program passed all the tests that you wrote.
 
 Grading tests takes a while, because new files have to be created and
 then tests run for each combination of student * assignment * chaff.
-
 If you have many cores, and feel brave, and have a real need for
 speed, you could modify the scripts to call the shell commands with a
 `"&"` at the end (so that grading proceeds in parallel, with lots and
