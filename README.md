@@ -148,6 +148,13 @@ alphabetically earlier who submitted between the two grading runs…
 
 ----
 
+## Re-Grading
+
+If you need to re-grade a student, delete their grade report, update
+their submission if necessary, and re-run the grading script.
+
+----
+
 ## Pathnames
 
 Student submissions are in `Submissions/` (with `Code/` and `Tests/`
