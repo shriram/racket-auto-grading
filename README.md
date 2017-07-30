@@ -195,4 +195,7 @@ FUTURE WORK:
   testing, too: the script will strip off the three comment lines
   automatically prepended to student language code by DrRacket.
 
+- Get rid of bash! Run everything inside Racket itself. In particular,
+  there shouldn't be need to use bash to run `raco test`.
+
 ----
