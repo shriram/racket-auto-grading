@@ -1,4 +1,4 @@
-Purpose:
+# Purpose
 
 To automate grading of programs written in student languages, both
 
@@ -12,11 +12,11 @@ System dependencies:
 
 ----
 
-TL;DR:
+# TL;DR
 
 In your grading dir, clone this repository.
 
-Create Grades/Code/ and Grades/Tests/.
+Create `Grades/Code/` and `Grades/Tests/`.
 
 Edit common.rkt to customize for a particular assignment. Odds are you
 will need to alter
@@ -37,11 +37,15 @@ Much more detail follows.
 
 ----
 
+# Repository Name Dependency
+
 The Racket programs assume the scripts reside in `racket-auto-grading/`
 relative to the current directory. So if you change the name of the
 repo after cloning it, you need to update this name in each program.
 
 ----
+
+# Testing File Assumption
 
 Assumption: students have turned all tests in in a single file, which
 may include tests for multiple functions. This file must also contain
@@ -50,6 +54,8 @@ tests, but it must NOT contain any implementations of those functions
 (since we will be appending our own implementations).
 
 ----
+
+# Multiple Submissions
 
 Depending on how the submission process is configured, students may be
 free to submit more than once. In Google Drive, this will result in
@@ -61,6 +67,8 @@ homework deadline; etc.).
 
 ----
 
+# Reading Test Counts
+
 Note that the code correctness report may report a large number of
 tests. This is an artifact of both tests the students themselves wrote
 and the way tests are counted. What matters is how many tests
@@ -68,6 +76,21 @@ and the way tests are counted. What matters is how many tests
 student's program passed all the tests that you wrote.
 
 ----
+
+# Speed
+
+Grading tests takes a while, because new files have to be created and
+then tests run for each combination of student * assignment * chaff.
+
+If you have many cores, and feel brave, and have a real need for
+speed, you could modify the scripts to call the shell commands with a
+`"&"` at the end (so that grading proceeds in parallel, with lots and
+lots of processes being spawned). This hasn't been tested and may well
+crash catastrophically on your system. Try at your own risk.
+
+----
+
+# Troubleshooting
 
 If a student appears to have no grading output: e.g.,
 ```
@@ -83,20 +106,7 @@ that means their program may have been in `#lang racket` rather than
 in a student language, and is using the professional unit testing
 framework. This needs to be graded by hand.
 
-----
-
-Grading tests takes a while, because new files have to be created and
-then tests run for each combination of student * assignment * chaff.
-
-If you have many cores, and feel brave, and have a real need for
-speed, you could modify the scripts to call the shell commands with a
-`"&"` at the end (so that grading proceeds in parallel, with lots and
-lots of processes being spawned). This hasn't been tested and may well
-crash catastrophically on your system. Try at your own risk.
-
-----
-
-Wheat/chaff grading is brittle in a few ways:
+Similarly, wheat/chaff grading is brittle in a few ways:
 
 - It will fail on graphical files. This will show up as errors
   containing `WXME` in the output. The easiest thing to do in these
@@ -115,6 +125,8 @@ That said, if it finds something unpredicted in the output, it'll say
 
 ----
 
+# System State
+
 A student's name is printed at the beginning of grading them, but
 their grade report is written out only at the end. Thus, if there's a
 catastrophic error when grading a student (e.g., they turned in a file
@@ -126,6 +138,8 @@ a grade report, grading will resume with them [*].
 alphabetically earlier who submitted between the two grading runs…
 
 ----
+
+# Pathnames
 
 Student submissions are in `Submissions/` (with `Code/` and `Tests/`
 subdirs). Typically, this is a link to a Google Drive directory since
@@ -172,7 +186,7 @@ with the constructed files on which Racket was run.
 
 ----
 
-FUTURE WORK:
+# Future Work
 
 - Use Wheats when grading tests!
 
