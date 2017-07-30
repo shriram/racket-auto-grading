@@ -16,10 +16,13 @@ System dependencies:
 
 In your grading dir, clone this repository.
 
+Make sure student submissions are in `Submissions/Code/` and
+`Submissions/Tests/`.
+
 Create `Grades/Code/` and `Grades/Tests/`.
 
-Edit common.rkt to customize for a particular assignment. Odds are you
-will need to alter
+Edit `common.rkt` to customize for a particular assignment. Odds are
+you will need to alter
 - `asgn-names` (List-of-strings, sans `".rkt"` at the end)
 - `extract-name-regexp-maker` (String -> Regexp, parameter is
   typically `"code"` or `"tests"`; even if you keep everything else the
@@ -27,7 +30,9 @@ will need to alter
   current assignment name)
 If you see no output, odds are you forgot to edit one or both.
 
-Then run
+Sacrifice a lambda in the name of the Knights of the Lambda Calculus.
+
+Then run:
 ```
   racket grade-code.rkt
   racket grade-tests.rkt
