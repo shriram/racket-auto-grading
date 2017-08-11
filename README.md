@@ -23,7 +23,7 @@ one for code and the other for tests (one file each).
 
 Create `Grades/Code/` and `Grades/Tests/`.
 
-Edit `racket-auto/grading/common.rkt` to customize for a particular
+Edit `racket-auto-grading/common.rkt` to customize for a particular
 assignment. Odds are you will need to alter
 - `asgn-names` (List-of-strings, sans `".rkt"` at the end)
 - `extract-name-regexp-maker` (String -> Regexp, parameter is
